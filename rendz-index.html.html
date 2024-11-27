@@ -1,0 +1,694 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>mrvelous</title>
+  <link rel="icon" href="#" type="image/png" sizes="16x16">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<style>
+  
+
+@media (min-width: 766px) {
+
+.gsection {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 0 100px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.gsection:nth-child(even) {
+  justify-content: flex-end;
+}
+.gsection .imgBox {
+  position: relative;
+  width: 600px;
+  height: 400px;
+  overflow: hidden;
+}
+.gsection .imgBox::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 1;
+  transition: 0.5s;
+  transform-origin: right;
+  transform: scaleX(1);
+}
+.gsection:nth-child(even) .imgBox::before {
+  transform-origin: left;
+}
+.gsection .imgBox.active::before {
+  transform: scaleX(0);
+}
+.gsection .imgBox img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.gtext-contain .gtext-animate-1{
+  opacity: 0;
+  transition: 1s ease;
+  z-index: 2024;
+  display: block;
+  position: relative;
+}
+.gtext-contain.active .gtext-animate-1{
+  display: block;
+  opacity: 1;
+}
+
+.gtext-contain{
+  width: 50%;
+  display: block;
+  padding-left: 15px;
+}
+
+.gtext-font{
+  font-size: 20pt;
+  color: #000;
+}
+
+.gtext-font2{
+  font-size: 20pt;
+  color: #fff;
+}
+
+
+
+
+.gsectionmoveright {
+  position: relative;
+  width: 100%;
+
+}
+.gsectionmoveright-contain{
+  position: relative;
+  width: 100%;
+  padding:120px 120px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.mvright-cont{
+position: absolute;
+height: 100%;
+width: 100%;
+display: block;
+}
+.mvright-bg-black{
+  background-color: #000;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  transition: 0.3s ease-in-out 0s;
+  
+  overflow-x: hidden;
+  border-radius: 0;
+  transform:translate3d(0px,0px,0px) scale(1);
+}
+
+.mvright-cont.active .mvright-bg-black{
+transform:translate3d(0px,0px,0px) scale(0.95) !important;
+  border-radius: 30px !important;
+}
+
+
+
+
+.moveimg-right{
+position: relative;
+width: 600px;
+height: 400px;
+}
+
+.moveimg-right img{
+position: absolute;
+width: 100%;
+height: 100%;
+object-fit: cover;
+transform: translateX(-100%);
+transition: 0.3s ease-in-out;
+-webkit-transition: 1s ease-in-out;
+}
+
+.moveimg-right.active img{
+transform: translateX(0);
+}
+
+
+}
+@media (max-width: 766px) {
+
+.gsection {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  padding: 50px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.gsection:nth-child(even) {
+  justify-content: flex-end;
+}
+.gsection .imgBox {
+  position: relative;
+  width: 100%;
+  height: 400px;
+}
+
+.gsection .imgBox img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+
+
+.gsectionmoveright {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  padding: 50px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+
+.moveimg-right{
+position: relative;
+width: 100%;
+height: 400px;
+overflow: hidden;
+}
+
+.moveimg-right img{
+position: absolute;
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+
+
+
+.mvright-cont{
+position: absolute;
+height: 100%;
+width: 100%;
+display: block;
+}
+.mvright-bg-black{
+  background-color: #000;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  transition: 0.3s ease-in-out 0s;
+  
+  overflow-x: hidden;
+  border-radius: 0;
+  transform:translate3d(0px,0px,0px) scale(1);
+}
+
+.gtext-font2{
+  font-size: 20pt;
+  color: #fff;
+}
+
+
+
+
+
+.gtext-contain .gtext-animate-1{
+opacity: 1;
+display: block;
+transition: 1s ease-in-out;
+z-index: 2024;
+position: relative;
+}
+
+
+.gtext-contain.active .gtext-animate-1{
+  display: block;
+  opacity: 1;
+  transition: 1s ease-in-out;
+}
+.gtext-contain{
+  width: 100%;
+  display: block;
+}
+
+.gtext-font{
+  font-size: 20pt;
+  color: #000;
+}
+}
+
+
+
+.gbody{
+min-height: 100svh;
+display: block;
+position: relative;
+width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+#masterhead {
+padding-top: 20px;
+padding-bottom: 124px;
+margin-bottom: -52px;
+}
+
+.carousel {
+  position: relative;
+  height: 150px;
+}
+
+.carousel-inner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-inner > .item {
+  position: relative;
+  display: none;
+  height: 150px;
+  background-color: #777;
+-webkit-transition: .6s ease-in-out left;
+-o-transition: .6s ease-in-out left;
+transition: .6s ease-in-out left;
+}
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+line-height: 1;
+ position: absolute;
+ top: 0;
+ left: 0;
+ min-width: 100%;
+ height: 150px;
+}
+
+.carousel-inner > .active,
+.carousel-inner > .next,
+.carousel-inner > .prev {
+display: block;
+}
+
+.carousel-inner > .active {
+left: 0;
+}
+
+.carousel-inner > .next,
+.carousel-inner > .prev {
+position: absolute;
+top: 0;
+width: 100%;
+}
+
+.carousel-inner > .next {
+left: 100%;
+}
+
+.carousel-inner > .prev {
+left: -100%;
+}
+
+.carousel-inner > .next.left,
+.carousel-inner > .prev.right {
+left: 0;
+}
+
+.carousel-inner > .active.left {
+left: -100%;
+}
+
+.carousel-inner > .active.right {
+left: 100%;
+}
+
+.controlsBlock {
+ position: relative;
+ bottom: 0;
+ left: 0;
+ top: 10px;
+ display: block;
+ width: 177px;
+ margin: 0 auto;
+ z-index: 1;
+ height: 24px;
+ text-align: center;
+}
+
+.controls {
+ position: relative;
+ display: block;
+}
+
+.carousel-control {
+position: absolute;
+top: 25.5px;
+bottom: 0;
+left: 0;
+background: #000000;
+font-size: 5px;
+background: none !important;
+color: #000 !important;
+text-align: center;
+}
+
+.carousel-control i {
+  font-size: 20px;
+}
+
+.carousel-control.left {
+left: 0;
+}
+
+.carousel-control.right {
+right: 0;
+
+}
+
+.carousel-control:hover,
+.carousel-control:focus {
+color: #000;
+}
+
+.carousel-control .glyphicon-chevron-left,
+.carousel-control .glyphicon-chevron-right {
+position: absolute;
+z-index: 5;
+display: inline-block;
+}
+
+.carousel-control .glyphicon-chevron-left {
+left: 0;
+}
+
+.carousel-control .glyphicon-chevron-right {
+right: 0;
+}
+
+.carousel-indicators {
+position: relative;
+bottom: 0;
+left: 50%;
+z-index: 15;
+width: 60%;
+top: 10px;
+padding-left: 0;
+margin-left: -30%;
+text-align: center;
+list-style: none;
+}
+
+
+.carousel-indicators li {
+display: inline-block;
+ zoom: 1;
+ width: 10px;
+ height: 10px;
+ margin: 0 2px;
+ background: transparent;
+ -webkit-border-radius: 50%;
+ -moz-border-radius: 50%;
+ border-radius: 50%;
+ border: 3px solid transparent;
+ -webkit-box-shadow: rgba(0,0,0,0.5) 0 0 2px;
+ -moz-box-shadow: rgba(0,0,0,0.5) 0 0 2px;
+ box-shadow: rgba(0,0,0,0.5) 0 0 2px;
+ cursor: pointer;
+}
+
+.carousel-indicators .active {
+width: 10px;
+height: 10px;
+margin: 0;
+background-color: #000000;
+}
+
+.carousel-caption {
+position: absolute;
+right: 15%;
+bottom: 20px;
+left: 15%;
+z-index: 10;
+padding-top: 20px;
+padding-bottom: 20px;
+color: #fff;
+text-align: center;
+text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+}
+
+.carousel-caption .btn {
+text-shadow: none;
+}
+
+@media screen and (min-width: 768px) {
+.carousel {
+height: 500px;
+}
+
+.carousel-inner > .item {
+height: 500px;
+}
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+height: 500px;
+}
+
+.carousel-control .glyphicon-chevron-left,
+.carousel-control .glyphicon-chevron-right,
+.carousel-control .icon-prev,
+.carousel-control .icon-next {
+    
+    font-size: 15px;
+}
+
+.carousel-caption {
+    right: 20%;
+    left: 20%;
+    padding-bottom: 30px;
+}
+
+.carousel-indicators {
+    bottom: .0;
+}
+}
+
+.carousel-indicators .active{
+background-color: #000 !important;
+}
+
+</style>
+</head>
+
+
+<body>
+  <div style="max-width: 800px;margin: 0 auto;display: block;">
+
+    
+    <header>
+        <h1 style="text-align:center;font-size:300%;color:black">MRVELOUS WEBSITE</h1>
+    </header>
+
+    <p class="line" style="text-align: center;"><iframe width="560" height="315" src="FINAL INTRO VIDEO.mp4" title="Media player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
+
+
+    
+</div>
+
+  <div id="masterhead">
+    <div class="container">
+    <div class="slideshow">
+    <div id="slideshow" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+    <div class="item active">
+    <img class="img-responsive" src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="First Slide">
+    <div class="container">
+    <div class="carousel-caption">
+    <h1>SlideShow 1</h1>
+    </div>
+    </div>
+    </div>
+    <div class="item">
+    <img class="img-responsive" src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Second Slide">
+    <div class="container">
+    <div class="carousel-caption">
+    <h1>SlideShow 2</h1>
+    </div>
+    </div>
+    </div>
+    <div class="item">
+    <img class="img-responsive" src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Third slide">
+    <div class="container">
+    <div class="carousel-caption">
+    <h1>SlideShow 3</h1>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="controlsBlock">
+    <div class="controls">
+      <!--
+    <a class="left carousel-control" href="#slideshow" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+     <a class="right carousel-control" href="#slideshow" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+     -->
+    <!--<a class="left carousel-control" href="#slideshow" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
+     <a class="right carousel-control" href="#slideshow" data-slide="next"><i class="fa fa-chevron-right"></i></a>-->
+    <div class="carousel-indicators">
+    <li data-target="#slideshow" data-slide-to="0" class="active"></li>
+    <li data-target="#slideshow" data-slide-to="1"></li>
+    <li data-target="#slideshow" data-slide-to="2"></li>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+<div class="gbody">
+
+<section class="gsection">
+  <div class="imgBox">
+    <img src="d8af2b73-9eda-48de-bc9d-28cc4ff63a53.jpeg" >
+  </div>
+  <div class="gtext-contain">
+    <div class="gtext-animate-1">
+    <p class="gtext-font">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti distinctio commodi, voluptatum laborum ipsam atque itaque ea officiis saepe earum illum, odio recusandae ipsa voluptate. Veritatis nihil voluptas fuga deleniti?</p>
+  </div>
+  </div>
+</section>
+<section class="gsectionmoveright">
+
+
+<div class="mvright-cont">
+<div class="mvright-bg-black"></div>
+</div>
+
+<div class="gsectionmoveright-contain">
+  <div class="moveimg-right">
+    <img src="cc78404e-72f8-4767-bc16-f5c0015c4cd6.jpeg" >
+  </div>
+
+  <div class="gtext-contain">
+    <div class="gtext-animate-1">
+    <p class="gtext-font2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti distinctio commodi, voluptatum laborum ipsam atque itaque ea officiis saepe earum illum, odio recusandae ipsa voluptate. Veritatis nihil voluptas fuga deleniti?</p>
+    <br><br>
+        <p class="gtext-font2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti distinctio commodi, voluptatum laborum ipsam atque itaque ea officiis saepe earum illum, odio recusandae ipsa voluptate. Veritatis nihil voluptas fuga deleniti?</p>
+  </div>
+  </div>
+</div>
+</section>
+
+
+<section class="gsection">
+  <div class="imgBox">
+    <img src="c44ce84c-f4a8-43a7-9acf-3b436d85ecf4.jpeg" >
+  </div>
+
+  <div class="gtext-contain">
+    <div class="gtext-animate-1">
+    <p class="gtext-font">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti distinctio commodi, voluptatum laborum ipsam atque itaque ea officiis saepe earum illum, odio recusandae ipsa voluptate. Veritatis nihil voluptas fuga deleniti?</p>
+  </div>
+  </div>
+
+</section>
+
+
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", (event) => {
+gsap.registerPlugin(ScrollTrigger)
+let mm = gsap.matchMedia();
+mm.add("(min-width: 766px)", () => {
+const imgBox = gsap.utils.toArray(".imgBox");
+imgBox.forEach((img, i) => {
+ScrollTrigger.create({
+ trigger: img,
+ toggleClass: "active",
+ start: "top 95%",
+ end: "top 5%"
+});
+});
+const animtext = gsap.utils.toArray(".gtext-contain");
+animtext.forEach((div, i) => {
+ScrollTrigger.create({
+ trigger: div,
+ toggleClass: "active",
+ start: "top 90%",
+ end: "bottom 10%"
+});
+});
+const imgmovetoright = gsap.utils.toArray(".moveimg-right");
+imgmovetoright.forEach((div, i) => {
+ScrollTrigger.create({
+ trigger: div,
+ toggleClass: "active",
+ start: "top 80%",
+ end: "bottom 10%"
+});
+});
+const bgmovetop = gsap.utils.toArray(".mvright-cont");
+bgmovetop.forEach((div, i) => {
+ScrollTrigger.create({
+ trigger: div,
+ toggleClass: "active",
+ start: "top 40%",
+ end: "bottom 20%"
+});
+});
+});
+   });
+$('#slideshow').carousel({
+  interval: 3000
+});
+</script>
+</body>
+</html>
+
+  

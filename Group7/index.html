@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>From Games to Growth: Teamwork, Thinking, and Creativity</title>
+<meta name="description" content="We are Group 7 – ONL 10-3, and our research focuses on the positive effects of online gaming. More than just entertainment, games can enhance teamwork, critical thinking, and creativity—skills that are essential in both school and real life.
+"/>
+<style>
+:root{
+--bg: #0b1020;
+--panel: #111833;
+--text: #eaf0ff;
+--muted: #b7c2e6;
+--brand: #6aa7ff;
+--accent: #7fffd4;
+--ok: #6ef3a0;
+--warn: #ffd166;
+--danger:#ff6b6b;
+--shadow: 0 10px 25px rgba(0,0,0,.25);
+}
+[data-theme="light"]{
+--bg: #f7f9ff;
+--panel: #ffffff;
+--text: #0b1020;
+--muted: #586488;
+--brand: #1f5cff;
+--accent: #0fb;
+--ok: #0cba70;
+--warn: #a36a00;
+--danger:#c43232;
+--shadow: 0 10px 20px rgba(12,35,76,.12);
+}
+
+
+*{box-sizing:border-box}
+html{
+scroll-behavior: smooth;
+transition: all 0.25ms;
+}
+body{
+    min-height: 100%;
+margin:0; font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji","Segoe UI Emoji";
+color:var(--text);
+background-color: transparent;
+background: transparent;
+//*
+background:linear-gradient(180deg, var(--bg), #fff 60%);
+
+background-image: url('image/whitebg.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center;
+*/
+
+
+}
+
+.bgbag{
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    background-image: url('image/whitebg.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center;
+z-index: 1022;
+}
+.bgcontain{
+    display: block;
+    width: 100%;
+    z-index: 1028;
+    position: relative;
+}
+
+
+.flexvid{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.flexvid .card{
+    width: 100%;
+    max-width: 800px;
+}
+.mybg{
+    background-image: url('image/img5.png');
+
+}
+a{color:var(--brand); text-decoration:none}
+a:hover{ text-decoration:underline }
+.container{ width:100%;
+z-index: 1028;
+display: block;
+position: relative; }
+.hero.heroadjust{
+    padding: 25px;
+}
+
+/* Header */
+.skip-link{position:absolute;left:-9999px;top:auto;overflow:hidden}
+.skip-link:focus{left:1rem;top:1rem;background:var(--accent);color:#022;padding:.5rem 1rem;border-radius:.5rem}
+header{
+position:sticky; top:0; backdrop-filter:saturate(1.2) blur(10px);
+background:color-mix(in srgb, var(--panel) 80%, transparent);
+border-bottom:1px solid color-mix(in srgb, var(--text) 12%, transparent);
+z-index:1030
+}
+.nav{display:flex;align-items:center;gap:1rem; padding:.75rem 0}
+.brand{display:flex;align-items:center;gap:.6rem;font-weight:800;letter-spacing:.3px}
+.dot{width:14px;height:14px;border-radius:50%;background:radial-gradient(circle at 30% 30%, var(--accent), var(--brand)); box-shadow:0 0 25px color-mix(in srgb, var(--accent) 50%, transparent)}
+.nav a{font-weight:600; opacity:.9}
+.nav-spacer{flex:1}
+.theme-btn{border:1px solid color-mix(in srgb, var(--text) 15%, transparent); background:var(--panel); color:var(--text);
+border-radius:999px;padding:.5rem .85rem; cursor:pointer}
+
+/* Hero */
+.hero{padding:64px 0 36px}
+.hero .tag{display:inline-flex;gap:.4rem;align-items:center;background:color-mix(in srgb, var(--brand) 12%, var(--panel));
+border:1px solid color-mix(in srgb, var(--brand) 25%, transparent); color:var(--brand); padding:.3rem .6rem; border-radius:.5rem; font-weight:700; font-size:.85rem}
+h1{font-size:clamp(1.8rem, 3.4vw + .8rem, 3rem);line-height:1.15;margin:.6rem 0}
+.lead{font-size:1.075rem;color:var(--muted);}
+.hero-grid{display:grid;gap:2rem;align-items:center}
+.hero-card{background:var(--panel);border:1px solid color-mix(in srgb, var(--text) 10%, transparent);border-radius:1rem;padding:1rem 1.2rem; box-shadow:var(--shadow)}
+
+/* Sections */
+section{padding:25px;}
+.section-title{font-size:1.4rem;margin:0 0 .4rem 0}
+.section-kicker{color:var(--brand); font-weight:800; letter-spacing:.14em; text-transform:uppercase; font-size:.78rem}
+
+/* Cards & grids */
+.grid{display:grid; gap:1rem}
+.grid-3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.grid-2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.card{background:var(--panel);border:1px solid color-mix(in srgb, var(--text) 10%, transparent); border-radius:1rem; padding:1rem 1.1rem; box-shadow:var(--shadow)}
+.badge{display:inline-block; font-size:.75rem; font-weight:800; padding:.2rem .5rem; border-radius:.4rem; background:color-mix(in srgb, var(--accent) 20%, var(--panel)); color:color-mix(in srgb, var(--text) 90%, var(--brand))}
+
+/* Quotes */
+blockquote{margin:0; padding:1rem 1.2rem; border-left:4px solid var(--brand); background:color-mix(in srgb, var(--brand) 10%, var(--panel)); border-radius:.6rem}
+blockquote footer{margin-top:.6rem; color:var(--muted); font-size:.92rem}
+
+/* Table-like highlights without real table */
+.highlights{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1rem}
+.stat{background:var(--panel); border:1px solid color-mix(in srgb, var(--text) 10%, transparent); border-radius:.9rem; padding:1rem; text-align:center}
+.stat b{font-size:1.6rem; display:block}
+.stat small{color:var(--muted)}
+
+/* Details */
+details{background:var(--panel); border:1px solid color-mix(in srgb, var(--text) 10%, transparent); border-radius:.8rem; padding:.8rem 1rem}
+details summary{cursor:pointer; font-weight:700}
+
+/* Footer */
+footer{padding:40px 0; color:var(--muted)}
+
+/* Utilities */
+.mt-1{margin-top:.5rem}.mt-2{margin-top:1rem}.mt-3{margin-top:1.5rem}.mt-4{margin-top:2rem}
+.btn{display:inline-flex; align-items:center; gap:.5rem; font-weight:700; border:1px solid color-mix(in srgb, var(--text) 12%, transparent);
+background:linear-gradient(180deg, color-mix(in srgb, var(--brand) 15%, var(--panel)), var(--panel)); color:var(--text); padding:.6rem .9rem; border-radius:.7rem}
+.btn:hover{transform:translateY(-1px)}
+
+/* Responsive */
+@media (max-width: 900px){
+.hero-grid{grid-template-columns:1fr}
+.grid-3{grid-template-columns:1fr}
+.grid-2{grid-template-columns:1fr}
+.highlights{grid-template-columns:1fr 1fr}
+}
+
+
+.chart-section{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color:#ffffff;
+    padding: 25px;
+}
+
+.chart-div{
+    display: block;
+    width: 50%;
+}
+</style>
+</head>
+<body>
+<div class="bgbag"></div>
+
+
+<header>
+<div class="container nav" role="navigation" aria-label="Main">
+
+<nav style="display:flex;gap:1rem;flex-wrap:wrap;width: 100%; justify-content: center;">
+<a href="#">Home</a>
+<a href="#backgroundstudy">Research Background</a>
+<a href="#survey">Survey & Interview Results</a>
+<a href="#findingneed">Finding a Need for Viewers</a>
+<a href="#contact">Contact</a>
+</nav>
+<div class="nav-spacer"></div>
+<button class="theme-btn" id="themeBtn" aria-pressed="false" aria-label="Toggle theme">🌗 Theme</button>
+</div>
+</header>
+
+
+
+<img src="image/img6.jpg" style="width: 100%; display: block; margin: 0 auto; border-radius: 15px;z-index: 1028;position: relative;">
+
+<main id="main" class="container">
+<section class="hero heroadjust ">
+<div class="hero-grid">
+<div>
+<span class="tag" aria-label="site tag">Student Research Site</span>
+<h1>From Games to Growth: <span style="color:var(--brand)">Teamwork</span>, <span style="color:var(--brand)">Thinking</span>, and <span style="color:var(--brand)">Creativity</span></h1>
+<p class="lead">We are Group 7 – ONL 10-3, and our research focuses on the positive effects of online gaming. Online gaming today is more than just a pastime or source of entertainment—it has become a platform that builds valuable life skills. Through gaming, players learn how to work together as a team, develop critical thinking in solving complex challenges, and enhance creativity by exploring different strategies and approaches. These skills are not only useful inside the classroom but also play a vital role in real-life situations where collaboration, problem-solving, and innovative thinking are needed.
+Our study aims to highlight these benefits and show that, when managed properly, online gaming can be a powerful tool for personal growth, academic improvement, and social connection.
+
+</p>
+</div>
+</div>
+
+</div>
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+<section id="backgroundstudy">
+<h2 class="section-title">📚 Background of the Study</h2>
+<div class="grid grid-2 mt-2">
+<div class="card">
+<p>We chose the topic of online gaming because it is a big part of students’ daily lives and interests. Many of us play games like Mobile Legends, Minecraft, and Roblox, and we noticed that gaming is often seen only as entertainment. However, we believe it also teaches useful skills such as teamwork, critical thinking, and creativity. By studying this topic, we want to show the positive side of gaming and how it can help students in school and in real life.</p>
+
+<p class="mt-1">“Online gaming should be recognized as more than just entertainment because it significantly enhances students’ teamwork, critical thinking, and creativity, which are essential for both learning and real-life problem-solving.”</p>
+</div>
+<div class="card">
+<blockquote>
+“Games help me relax and think more strategically, especially during group tasks.”
+<footer>— Student respondent (survey)</footer>
+</blockquote>
+</div>
+</div>
+</section>
+
+<section id="survey">
+<p class="section-kicker">Results</p>
+<h2 class="section-title">Key Findings (Survey + Interviews)</h2>
+
+
+
+
+<div class="grid grid-3 mt-3">
+<article class="card" aria-labelledby="f-team">
+<div class="badge">🤝Teamwork</div>
+<h3 id="f-team">Working Together</h3>
+<p>Many students said online games help improve teamwork and communication. When playing games like Mobile Legends or Valorant, players need to cooperate, plan strategies, and support each other to win. One student shared: “Playing Mobile Legends taught me teamwork. It helped me coordinate in group projects.” Gaming shows that working together makes both games—and schoolwork—more successful.</p>
+</article>
+<article class="card" aria-labelledby="f-thinking">
+<div class="badge">🧠Critical Thinking</div>
+<h3 id="f-thinking">Strategic & Critical Thinking</h3>
+<p>Survey results showed that gaming strengthens problem-solving and decision-making skills. Strategy games like Dota, Minecraft, and Mobile Legends force players to think fast and make the best choices under pressure. As one interviewee explained: “As a team captain, I had to analyze strategies and make quick calls for my team.” These skills are useful not only in gaming but also in exams, class discussions, and real-life challenges.</p>
+</article>
+<article class="card" aria-labelledby="f-creative">
+<div class="badge">🎨Creativity</div>
+<h3 id="f-creative">Creative Expression</h3>
+<p>Students also said that games boost their creativity, especially in Minecraft and Roblox Studio. These games let players design, build, and express themselves freely. One student proudly said: “In Roblox Studio I built a mini school and custom characters—great for creativity.” Gaming helps students turn imagination into something concrete, which can inspire projects in school or even future careers.</p>
+</article>
+</div>
+
+<div class="grid grid-2 mt-3">
+<div class="card">
+<h3 class="mt-0">Student Voices</h3>
+<blockquote>
+ 💬 “Mobile Legends taught me teamwork and helped in group projects.”
+<footer>— Interview, Grade 10</footer>
+</blockquote>
+<blockquote class="mt-1">
+ 💬 “Minecraft trained me to plan and solve problems quickly.”
+<footer>— Interview, Grade 10</footer>
+</blockquote>
+</div>
+
+<div class="card">
+<h3 class="mt-0">Student Voices</h3>
+<ul>
+<blockquote class="mt-1">
+ 💬 “Roblox Studio let me design and be creative like an architect.”
+<footer>— Interview, Grade 10</footer>
+</blockquote>
+<blockquote class="mt-2">
+ 💬 “Gaming helps, but too much can affect schoolwork.”
+<footer>— Interview, Grade 10</footer>
+</blockquote>
+</ul>
+</div>
+</div>
+</section>
+
+
+<section id="why">
+<h2 class="section-title">Distribution of Students’ Responses on the Positive and Negative Effects of Online Gaming</h2>
+<div class="grid grid-2 mt-2">
+<div class="card">
+<img src="image/Positive_1.jpg" style="width: 100%;display: block;">
+</div>
+<div class="card">
+<img src="image/Positive_2.jpg" style="width: 100%;display: block;">
+</div>
+</div>
+<div class="grid grid-2 mt-2">
+<div class="card">
+<img src="image/Negative_1.jpg" style="width: 100%;display: block;">
+</div>
+<div class="card">
+<img src="image/Negative_2.jpg" style="width: 100%;display: block;">
+</div>
+</div>
+</section>
+<section id="method">
+<h2 class="section-title">Summary of Results</h2>
+<div style="width: 100%;display: block;">
+<div class="card">
+<p>The results of our survey and interviews show that stress relief is the top positive effect of online gaming among students. Many respondents explained that gaming helps them relax after school and take a break from academic pressure. Aside from this, students also identified teamwork, problem-solving, and creativity as strong benefits, especially when playing games that require cooperation, strategy, or building. However, the study also revealed challenges, with addiction and poor time management being the main concerns. These findings suggest that while gaming supports valuable skills and well-being, it must be practiced in moderation to avoid negative effects.</p>
+</div>
+
+</div>
+</section>
+
+
+<section id="findingneed">
+<h2 class="section-title">Finding a Need for Viewers</h2>
+<div class="grid grid-3 mt-2">
+<div class="card">
+<li>Chosen Content Type: 
+Educational YouTube Videos about Gaming.</li>
+</div>
+<div class="card">
+<li>Need of Viewers (Summary):
+    Students want content that shows gaming can build teamwork, problem-solving, and creativity, while also reminding them about balance</li>
+</div>
+<div class="card">
+    <li>
+Streaming Platform: YouTube (most popular and accessible for students).
+    </li>
+    </div>
+
+    </div>
+</section>
+
+
+<section id="">
+<h2 class="section-title">Sample Gaming Video</h2>
+<div class="flexvid">
+<div class="card">
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/vYn_sdZTfIM?si=5di5_3WtH8IHpUOq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+
+    </div>
+</section>
+<section id="">
+<h2 class="section-title">🎥 Student Voices: How Gaming Builds Skills</h2>
+<div class="flexvid">
+<div class="card">
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/GDYv6xAvO9E?si=5oZGjcYdfTi4b8pq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+<div class="card">
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/jkDAZSpUUO4?si=hmnoASAVWZDI9ie1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+
+    </div>
+</section>
+
+
+
+<section id="contact">
+<h2 class="section-title">✅ Conclusion</h2>
+<div class="grid grid-2 mt-2">
+<div class="card">
+<p>Through this process, we learned that research is not just about collecting data but also about understanding the real needs of our audience. By analyzing survey results, listening to student voices, and reviewing streaming options, we discovered that the best way to reach our audience is through educational YouTube videos about gaming. This streaming content type responds to what students want—fun and engaging content—while guiding them to use gaming in a balanced way that improves teamwork, problem-solving, and creativity.</p>
+</div>
+<div class="card">
+<h3>Data collection</h3>
+<ul>
+<li><strong>Survey:</strong> Google Form among students.</li>
+<li><strong>Interviews:</strong> short guided questions with volunteers.</li>
+</ul>
+<h3>Contact Us</h3>
+<span>For any questions about our project, you may contact Group 7 – ONL 10-3 through <span style="font-style: italic;">ap.rendiezayne.vego@apecschools.edu.ph.</span></li>
+</div>
+</div>
+</section>
+
+
+
+</main>
+
+
+<script>
+// Theme toggle
+const btn = document.getElementById('themeBtn');
+const html = document.documentElement;
+btn.addEventListener('click', () => {
+const dark = html.getAttribute('data-theme') !== 'dark';
+html.setAttribute('data-theme', dark ? 'dark' : 'light');
+btn.setAttribute('aria-pressed', String(dark));
+});
+// Footer meta
+document.getElementById('year').textContent = new Date().getFullYear();
+document.getElementById('updated').textContent = new Date().toLocaleDateString();
+</script>
+</body>
+</html>

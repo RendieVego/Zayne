@@ -59,13 +59,13 @@ body{
 
 /* ===== Header / Nav ===== */
 header{
-  position:sticky; top:0; z-index:50;
+  position:sticky; top:0; z-index:5000;
   backdrop-filter:saturate(1.2) blur(10px);
   background:color-mix(in srgb, var(--panel) 88%, transparent);
   border-bottom:1px solid color-mix(in srgb, var(--text) 10%, transparent);
 }
 .nav{display:flex; align-items:center; gap:1rem; padding:.75rem 0}
-.brand{display:flex; align-items:center; gap:.6rem; font-weight:900; letter-spacing:.3px}
+.brand{display:flex; align-items:center; gap:.6rem; font-weight:900; letter-spacing:.3px; display:none;}
 .dot{
   width:14px; height:14px; border-radius:50%;
   background:radial-gradient(circle at 30% 30%, var(--brand), var(--accent));
@@ -141,6 +141,8 @@ section{padding:28px 0}
       <a href="#home" class="active">Home</a>
       <a href="#outline">Stream Outline</a>
       <a href="#promo">Promotional Plan</a>
+<a href="#media">Teasers & Channel</a>
+      
       <a href="#team">Team Members</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -149,7 +151,7 @@ section{padding:28px 0}
   </div>
 </header>
 
-<img src="rendie-main-html/image/teamsyncbanner_alt.jpg" style="width: 100%; display: block; margin: 0 auto; border-radius: 15px;z-index: 1028;position: relative;">
+<img src="image/teamsyncbanner_alt.jpg" style="width: 100%; display: block; margin: 0 auto; border-radius: 15px;z-index: 1028;position: relative;">
 
 <main id="main" class="container">
 
@@ -164,7 +166,7 @@ section{padding:28px 0}
         </p>
         <div class="mt-2">
           <a class="btn" href="https://www.twitch.tv/teamsync_official" target="_blank" rel="noopener">▶ Watch on Twitch</a>
-          <a class="btn" href="https://www.youtube.com/@teamsync_official" target="_blank" rel="noopener">▣ YouTube Channel</a>
+          <a class="btn" href="https://www.youtube.com/@teamsyncofficial" target="_blank" rel="noopener">▣ YouTube Channel</a>
         </div>
       </div>
     </div>
@@ -251,7 +253,7 @@ section{padding:28px 0}
     <div class="flexvid">
       <div class="card">
         <!-- YouTube teaser: replace VIDEO_ID when you have yours -->
-        <iframe width="100%" height="360" src="https://www.youtube.com/embed/vYn_sdZTfIM"
+        <iframe width="100%" height="360" src="https://www.youtube.com/embed/cfzn5UGuU4A?"
           title="YouTube teaser" frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
@@ -259,14 +261,14 @@ section{padding:28px 0}
       </div>
       <div class="card">
         <!-- Twitch channel embed -->
+         <img src="image/teamsync_poster.png" style="width:100%">
+         <!--
         <iframe
-          src="https://player.twitch.tv/?channel=teamsync_official&parent=example.com"
+          src="image/teamsync_poster.png"
           height="360" width="100%" allowfullscreen
           title="Twitch Channel Player (replace parent with your domain)">
         </iframe>
-        <p class="mt-1" style="color:var(--muted);font-size:.9rem">
-          <strong>Note:</strong> Replace <code>parent=example.com</code> with your site’s domain when you host (e.g., <code>parent=your-site.netlify.app</code>).
-        </p>
+        -->
       </div>
     </div>
   </section>
@@ -276,13 +278,13 @@ section{padding:28px 0}
     <p class="section-kicker">Group</p>
     <h2 class="section-title">Team Members & Roles</h2>
     <div class="grid grid-3 mt-2">
-      <div class="card"><div class="badge">Leader</div><h3>Rendie Zayne</h3></div>
-      <div class="card"><div class="badge">Co-host</div><h3>Princess Nhaeema</h3></div>
-      <div class="card"><div class="badge">Script Writer</div><h3>Samantha Aliyah</h3></div>
-      <div class="card"><div class="badge">Tech Operator</div><h3>Marc Jelo</h3></div>
-      <div class="card"><div class="badge">Editor</div><h3>Channel Kristal</h3></div>
-      <div class="card"><div class="badge">Designer</div><h3>Sheikah Ellaine</h3></div>
-      <div class="card"><div class="badge">Researcher</div><h3>Michael Kal-El</h3></div>
+      <div class="card"><div class="badge">Leader/Editor/Designer/Researcher</div><h3>Rendie Zayne</h3></div>
+      <div class="card"><div class="badge">Co-host/Designer</div><h3>Princess Nhaeema</h3></div>
+      <div class="card"><div class="badge">Designer/Tech Support</div><h3>Samantha Aliyah</h3></div>
+      <div class="card"><div class="badge">Member</div><h3>Marc Jelo</h3></div>
+      <div class="card"><div class="badge">Member</div><h3>Channel Kristal</h3></div>
+      <div class="card"><div class="badge">Member</div><h3>Sheikah Ellaine</h3></div>
+      <div class="card"><div class="badge">Co-host/Researcher</div><h3>Michael Kal-El</h3></div>
     </div>
   </section>
 
@@ -297,12 +299,6 @@ section{padding:28px 0}
         <p><strong>Email:</strong> teamsync.group@example.com</p>
       </div>
       <div class="card">
-        <h3 class="mt-0">Credits & Notes</h3>
-        <ul>
-          <li>Built with HTML5 & CSS3 • Theme supports Light/Dark</li>
-          <li>Replace banner <code>image/img6.jpg</code> with your Valorant banner</li>
-          <li>Swap YouTube <code>VIDEO_ID</code> when your teaser is ready</li>
-        </ul>
         <small style="color:var(--muted)">© <span id="year"></span> Team Sync • Life Labs Q2 PBA • Last updated: <span id="updated"></span></small>
       </div>
     </div>

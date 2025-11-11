@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>From Gaming to Growth: Teamwork, Thinking, and Creativity</title>
+<meta name="description" content="Team Sync — Life Labs Q2 PBA: Stream outline and promotional plan. Gaming builds teamwork, critical thinking, and creativity."/>
+<style>
+/* ===== THEME (Valorant-friendly) ===== */
+:root{
+  --bg:#0b1020;
+  --panel:#111833;
+  --text:#eaf0ff;
+  --muted:#b7c2e6;
+  --brand:#ff4655;      /* Valorant red */
+  --accent:#18e0c6;     /* teal accent to complement */
+  --ok:#69f0ae;
+  --warn:#ffd166;
+  --danger:#ff6b6b;
+  --shadow:0 10px 25px rgba(0,0,0,.25);
+}
+[data-theme="light"]{
+  --bg:#f7f9ff;
+  --panel:#ffffff;
+  --text:#0b1020;
+  --muted:#586488;
+  --brand:#ff4655;      /* keep Valorant red in light theme too */
+  --accent:#0bb;        /* softer teal for light */
+  --ok:#0cba70;
+  --warn:#a36a00;
+  --danger:#c43232;
+  --shadow:0 10px 20px rgba(12,35,76,.12);
+}
+
+/* ===== Base ===== */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; transition: all 0.25ms;}
+body{
+  min-height:100%;
+  margin:0;
+  font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial,"Apple Color Emoji","Segoe UI Emoji";
+  color:var(--text);
+  background:
+    radial-gradient(1200px 700px at -20% -30%, #16214d 0, transparent 55%),
+    radial-gradient(900px 600px at 120% -20%, #0b2a4a 0, transparent 50%),
+    var(--bg);
+}
+
+/* optional background image layer (keep or replace your own) */
+.bgbag{
+  position:fixed; inset:0; pointer-events:none; opacity:.07;
+  height: 100vh;
+  width: 100%;
+  background-image:url('image/whitebg.jpg');
+  background-size:cover; background-repeat:no-repeat; background-position:center;
+  z-index:1022;
+}
+.bgcontain{position:relative; z-index:2; display:block}
+
+/* ===== Header / Nav ===== */
+header{
+  position:sticky; top:0; z-index:50;
+  backdrop-filter:saturate(1.2) blur(10px);
+  background:color-mix(in srgb, var(--panel) 88%, transparent);
+  border-bottom:1px solid color-mix(in srgb, var(--text) 10%, transparent);
+}
+.nav{display:flex; align-items:center; gap:1rem; padding:.75rem 0}
+.brand{display:flex; align-items:center; gap:.6rem; font-weight:900; letter-spacing:.3px}
+.dot{
+  width:14px; height:14px; border-radius:50%;
+  background:radial-gradient(circle at 30% 30%, var(--brand), var(--accent));
+  box-shadow:0 0 22px color-mix(in srgb, var(--brand) 55%, transparent);
+}
+nav{display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; width:100%}
+nav a{font-weight:700; opacity:.95; padding:.4rem .6rem; border-radius:.5rem}
+nav a.active{background:color-mix(in srgb, var(--brand) 12%, var(--panel)); border:1px solid color-mix(in srgb, var(--brand) 25%, transparent)}
+.nav-spacer{flex:1}
+.theme-btn{border:1px solid color-mix(in srgb, var(--text) 15%, transparent); background:var(--panel); color:var(--text);
+  border-radius:999px; padding:.5rem .85rem; cursor:pointer}
+
+/* ===== Hero ===== */
+.hero{padding:32px 0 24px}
+.hero .tag{
+  display:inline-flex; gap:.4rem; align-items:center;
+  background:color-mix(in srgb, var(--brand) 10%, var(--panel));
+  border:1px solid color-mix(in srgb, var(--brand) 30%, transparent);
+  color:var(--brand); padding:.3rem .6rem; border-radius:.5rem; font-weight:800; font-size:.85rem
+}
+h1{font-size:clamp(1.8rem, 3.4vw + .8rem, 3rem); line-height:1.15; margin:.6rem 0}
+.lead{font-size:1.075rem; color:var(--muted)}
+.hero-grid{display:grid; gap:2rem; align-items:center}
+.hero-card{background:var(--panel); border:1px solid color-mix(in srgb, var(--text) 10%, transparent); border-radius:1rem; padding:1rem 1.2rem; box-shadow:var(--shadow)}
+.hero-img{
+  width:100%; display:block; margin:8px auto 0; border-radius:16px;
+  border:1px solid color-mix(in srgb, var(--text) 12%, transparent)
+}
+
+/* ===== Sections ===== */
+section{padding:28px 0}
+.section-title{font-size:1.4rem; margin:0 0 .4rem 0}
+.section-kicker{color:var(--brand); font-weight:900; letter-spacing:.14em; text-transform:uppercase; font-size:.78rem}
+
+/* ===== Cards & grids ===== */
+.grid{display:grid; gap:1rem}
+.grid-3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.grid-2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.card{background:var(--panel); border:1px solid color-mix(in srgb, var(--text) 10%, transparent); border-radius:1rem; padding:1rem 1.1rem; box-shadow:var(--shadow)}
+.badge{display:inline-block; font-size:.75rem; font-weight:900; padding:.2rem .5rem; border-radius:.4rem; background:color-mix(in srgb, var(--accent) 20%, var(--panel)); color:color-mix(in srgb, var(--text) 90%, var(--brand))}
+
+/* ===== Table look ===== */
+.table{width:100%; border-collapse:collapse; font-size:.96rem}
+.table th, .table td{padding:10px 10px; border-bottom:1px solid color-mix(in srgb, var(--text) 12%, transparent); vertical-align:top}
+.table thead th{color:var(--brand); text-align:left}
+.table tr:hover td{background:color-mix(in srgb, var(--accent) 6%, transparent)}
+
+/* ===== Utilities ===== */
+.mt-1{margin-top:.5rem}.mt-2{margin-top:1rem}.mt-3{margin-top:1.5rem}.mt-4{margin-top:2rem}
+.btn{display:inline-flex; align-items:center; gap:.5rem; font-weight:800; border:1px solid color-mix(in srgb, var(--text) 12%, transparent);
+  background:linear-gradient(180deg, color-mix(in srgb, var(--brand) 12%, var(--panel)), var(--panel)); color:var(--text); padding:.6rem .9rem; border-radius:.7rem}
+.btn:hover{transform:translateY(-1px)}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px){
+  .hero-grid{grid-template-columns:1fr}
+  .grid-3{grid-template-columns:1fr}
+  .grid-2{grid-template-columns:1fr}
+}
+
+/* video layout helper */
+.flexvid{display:flex; flex-wrap:wrap; gap:1rem; justify-content:center}
+.flexvid .card{width:100%; max-width:800px}
+</style>
+</head>
+<body>
+<div class="bgbag"></div>
+
+<header>
+  <div class="container nav" role="navigation" aria-label="Main">
+    <div class="brand"><span class="dot"></span></div>
+    <nav>
+      <a href="#home" class="active">Home</a>
+      <a href="#outline">Stream Outline</a>
+      <a href="#promo">Promotional Plan</a>
+      <a href="#team">Team Members</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-spacer"></div>
+    <button class="theme-btn" id="themeBtn" aria-pressed="false" aria-label="Toggle theme">🌗 Theme</button>
+  </div>
+</header>
+
+<img src="rendie-main-html/image/teamsyncbanner_alt.jpg" style="width: 100%; display: block; margin: 0 auto; border-radius: 15px;z-index: 1028;position: relative;">
+
+<main id="main" class="container">
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-grid">
+      <div>
+        <span class="tag">Life Labs Q2 • PBA</span>
+        <h1>From Games to Growth: <span style="color:var(--brand)">Teamwork</span>, <span style="color:var(--brand)">Thinking</span>, and <span style="color:var(--brand)">Creativity</span></h1>
+        <p class="lead">
+          We’re <strong>Team Sync (ONL 10-3)</strong>. Our weekly gaming stream shows how play can build real skills: teamwork, critical thinking, and creativity. This page documents our <em>stream outline</em> and <em>promotional plan</em> for the Life Labs Performance-Based Assessment.
+        </p>
+        <div class="mt-2">
+          <a class="btn" href="https://www.twitch.tv/teamsync_official" target="_blank" rel="noopener">▶ Watch on Twitch</a>
+          <a class="btn" href="https://www.youtube.com/@teamsync_official" target="_blank" rel="noopener">▣ YouTube Channel</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STREAM OUTLINE -->
+  <section id="outline">
+    <p class="section-kicker">Schedule</p>
+    <h2 class="section-title">Stream Outline (30 minutes)</h2>
+    <div class="grid grid-2 mt-2">
+      <div class="card">
+        <table class="table" role="table" aria-label="Stream Outline">
+          <thead>
+            <tr><th>Time</th><th>Topic</th><th>Activity</th><th>Allotment</th><th>Screen</th><th>Audio</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>4:00–4:05</td><td>Introduction</td><td>Welcome viewers; introduce Team Sync & goals</td><td>5 mins</td><td>Video</td><td>Mic + BGM</td></tr>
+            <tr><td>4:05–4:15</td><td>Main Gameplay</td><td>Short Valorant match; explain roles & calls</td><td>10 mins</td><td>Game Capture</td><td>Mic + teammates</td></tr>
+            <tr><td>4:15–4:25</td><td>Discussion</td><td>Strategy breakdown; what worked; creative plays</td><td>10 mins</td><td>Cam/Slides</td><td>Mic</td></tr>
+            <tr><td>4:25–4:28</td><td>Viewer Interaction</td><td>Read & answer live comments; quick challenges</td><td>3 mins</td><td>Chat Overlay</td><td>Mic</td></tr>
+            <tr><td>4:28–4:30</td><td>Closing</td><td>Thank viewers; plug next stream & socials</td><td>2 mins</td><td>Video</td><td>Mic</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h3 class="mt-0">Technical Checklist</h3>
+        <ul>
+          <li>Mic level check; noise suppression on</li>
+          <li>Stable internet (≥10 Mbps upload recommended)</li>
+          <li>OBS/Streamlabs scenes ready (Live/BRB/End); hotkeys set</li>
+          <li>Safety: no personal info on screen; chat filters enabled</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMOTIONAL PLAN -->
+  <section id="promo">
+    <p class="section-kicker">Promotion</p>
+    <h2 class="section-title">Promotional Plan</h2>
+    <div class="grid grid-2 mt-2">
+      <div class="card">
+        <h3 class="mt-0">Channels</h3>
+        <ul>
+          <li><strong>Facebook Page</strong> — teaser clips, countdowns, schedules</li>
+          <li><strong>Twitch</strong> — main stream hub; follows & notifications</li>
+          <li><strong>Discord Group</strong> — community updates and polls</li>
+          <li><strong>Instagram Stories</strong> — highlights and BTS photos</li>
+          <li><strong>YouTube Shorts</strong> — best moments after stream</li>
+        </ul>
+        <h3>Materials</h3>
+        <ul>
+          <li>Poster: <em>“Play & Learn: Teamwork with Team Sync”</em></li>
+          <li>15-sec teaser with exciting gameplay</li>
+          <li>Caption sample: <em>“Live Friday 4 PM! Play, laugh, and learn teamwork. Watch us on Twitch! #GamingStream #TeamworkInAction”</em></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 class="mt-0">Step-by-Step Timeline</h3>
+        <table class="table" role="table" aria-label="Promotion Timeline">
+          <thead><tr><th>Step</th><th>Action</th><th>Purpose</th><th>When</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Create poster & teaser</td><td>Catch attention</td><td>1–2 days before</td></tr>
+            <tr><td>2</td><td>Post to FB/Discord/IG/Twitch</td><td>Spread awareness</td><td>1 day before</td></tr>
+            <tr><td>3</td><td>Go live & engage</td><td>Increase engagement</td><td>Streaming day</td></tr>
+            <tr><td>4</td><td>Post highlights (YT Shorts/FB)</td><td>Keep engagement</td><td>After stream</td></tr>
+            <tr><td>5</td><td>Review analytics & feedback</td><td>Improve next stream</td><td>Day after</td></tr>
+          </tbody>
+        </table>
+        <h3>Monitoring & Evaluation</h3>
+        <ul>
+          <li>Track <strong>viewers, likes, comments, follows</strong></li>
+          <li>Compare <strong>before vs. after</strong> engagement</li>
+          <li>Adjust posting time, thumbnails, CTAs if low</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMBEDS -->
+  <section id="media">
+    <p class="section-kicker">Media</p>
+    <h2 class="section-title">Teasers & Channel</h2>
+    <div class="flexvid">
+      <div class="card">
+        <!-- YouTube teaser: replace VIDEO_ID when you have yours -->
+        <iframe width="100%" height="360" src="https://www.youtube.com/embed/vYn_sdZTfIM"
+          title="YouTube teaser" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+        </iframe>
+      </div>
+      <div class="card">
+        <!-- Twitch channel embed -->
+        <iframe
+          src="https://player.twitch.tv/?channel=teamsync_official&parent=example.com"
+          height="360" width="100%" allowfullscreen
+          title="Twitch Channel Player (replace parent with your domain)">
+        </iframe>
+        <p class="mt-1" style="color:var(--muted);font-size:.9rem">
+          <strong>Note:</strong> Replace <code>parent=example.com</code> with your site’s domain when you host (e.g., <code>parent=your-site.netlify.app</code>).
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team">
+    <p class="section-kicker">Group</p>
+    <h2 class="section-title">Team Members & Roles</h2>
+    <div class="grid grid-3 mt-2">
+      <div class="card"><div class="badge">Leader</div><h3>Rendie Zayne</h3></div>
+      <div class="card"><div class="badge">Co-host</div><h3>Princess Nhaeema</h3></div>
+      <div class="card"><div class="badge">Script Writer</div><h3>Samantha Aliyah</h3></div>
+      <div class="card"><div class="badge">Tech Operator</div><h3>Marc Jelo</h3></div>
+      <div class="card"><div class="badge">Editor</div><h3>Channel Kristal</h3></div>
+      <div class="card"><div class="badge">Designer</div><h3>Sheikah Ellaine</h3></div>
+      <div class="card"><div class="badge">Researcher</div><h3>Michael Kal-El</h3></div>
+    </div>
+  </section>
+
+  <!-- CONTACT / FOOTER -->
+  <section id="contact">
+    <p class="section-kicker">Contact</p>
+    <h2 class="section-title">Connect with Team Sync</h2>
+    <div class="grid grid-2 mt-2">
+      <div class="card">
+        <p><strong>Twitch:</strong> <a href="https://www.twitch.tv/teamsync_official" target="_blank">twitch.tv/teamsync_official</a></p>
+        <p><strong>YouTube:</strong> <a href="https://www.youtube.com/@teamsync_official" target="_blank">@teamsync_official</a></p>
+        <p><strong>Email:</strong> teamsync.group@example.com</p>
+      </div>
+      <div class="card">
+        <h3 class="mt-0">Credits & Notes</h3>
+        <ul>
+          <li>Built with HTML5 & CSS3 • Theme supports Light/Dark</li>
+          <li>Replace banner <code>image/img6.jpg</code> with your Valorant banner</li>
+          <li>Swap YouTube <code>VIDEO_ID</code> when your teaser is ready</li>
+        </ul>
+        <small style="color:var(--muted)">© <span id="year"></span> Team Sync • Life Labs Q2 PBA • Last updated: <span id="updated"></span></small>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+/* Theme toggle */
+const btn = document.getElementById('themeBtn');
+const htmlEl = document.documentElement;
+btn.addEventListener('click', () => {
+  const dark = htmlEl.getAttribute('data-theme') !== 'dark';
+  htmlEl.setAttribute('data-theme', dark ? 'dark' : 'light');
+  btn.setAttribute('aria-pressed', String(dark));
+});
+/* Footer meta */
+document.getElementById('year').textContent = new Date().getFullYear();
+document.getElementById('updated').textContent = new Date().toLocaleDateString();
+</script>
+</body>
+</html>

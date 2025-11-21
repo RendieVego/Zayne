@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Team Sync • Stream Plan & Promotions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#1E90FF; --green:#00FF88; --bg:#0f1115;
+    --panel:#171a22; --panel-2:#1d2230; --text:#e8eef7; --muted:#9aa6bd;
+    --border:rgba(255,255,255,.08);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--text);
+    font-family:'Inter',system-ui,Segoe UI,Roboto,Arial,sans-serif;line-height:1.65}
+  .container{width:min(1100px,92%);margin-inline:auto}
+  .topbar{position:sticky;top:0;background:var(--panel);border-bottom:1px solid var(--border);z-index:10}
+  .row{display:flex;gap:16px}.center{align-items:center}.between{justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+  .logo{width:48px;height:48px;border-radius:12px}
+  .brand-text h1{font-family:'Orbitron',sans-serif;font-size:1.35rem;margin:0}
+  .brand-text p{margin:0;color:var(--muted);font-size:.9rem}
+  .nav a{color:var(--text);text-decoration:none;margin-left:14px;font-weight:700;opacity:.9}
+  .nav a:hover{text-decoration:underline;opacity:1}
+
+  /* HERO with your banner */
+  .hero{
+    position:relative;border-bottom:1px solid var(--border);
+    background: #0b0f17 url('banner.jpg') center/cover no-repeat fixed;
+    min-height: 54vh; display:grid; place-items:center; text-align:center;
+  }
+  .hero::before{ /* dark overlay for readability */
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.6));
+  }
+  .hero-inner{position:relative;padding:56px 14px}
+  .hero h2{font-family:'Orbitron',sans-serif;font-size:2.2rem;margin:0 0 6px}
+  .hero p{margin:0 0 18px;color:#d9e5ff}
+  .btn{display:inline-block;padding:10px 16px;border-radius:10px;font-weight:800;text-decoration:none;border:2px solid transparent;transition:.2s}
+  .btn-primary{background:var(--blue);color:#071424}.btn-primary:hover{filter:brightness(1.06)}
+  .btn-outline{border-color:var(--green);color:var(--green);background:transparent}
+  .btn-accent{background:var(--green);color:#06231a}
+
+  .content{padding:30px 0 50px}
+  .card{background:var(--panel-2);padding:22px;border-radius:16px;margin:16px 0;border:1px solid var(--border)}
+  .card h3{margin-top:0;font-family:'Orbitron',sans-serif}
+  .bullets{margin:0;padding-left:18px}
+  .outline{margin:0;padding-left:18px}
+  .outline li{margin:.5rem 0}
+  .outline li span{display:inline-block;min-width:120px;color:var(--green);font-weight:800}
+  .grid-two{display:grid;gap:16px;grid-template-columns:1.6fr .9fr}
+  .note{background:#121620;border:1px dashed var(--border);border-radius:12px;padding:14px}
+  .grid-three{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .timeline{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+  .timeline th,.timeline td{padding:12px 14px;border-bottom:1px solid var(--border)}
+  .timeline thead th{background:#121a27;text-align:left}
+  .timeline tbody tr:nth-child(odd){background:#141b26}
+  .checklist{margin:0;padding-left:18px}
+  .links{list-style:none;margin:0;padding:0}
+  .links li{padding:6px 0;border-bottom:1px dashed var(--border)}
+  .footer{border-top:1px solid var(--border);padding:18px 0;color:var(--muted);text-align:center}
+  .small{font-size:.9rem}
+  @media (max-width:760px){.grid-two{grid-template-columns:1fr}.nav a{margin-left:10px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="container row between center">
+    <a class="brand" href="#home" aria-label="Team Sync Home">
+      <svg class="logo" viewBox="0 0 120 120" role="img" aria-label="Team Sync Logo">
+        <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#1E90FF"/><stop offset="100%" stop-color="#3ab9ff"/></linearGradient>
+        </defs>
+        <rect x="0" y="0" width="120" height="120" rx="22" fill="url(#g1)"></rect>
+        <text x="60" y="72" text-anchor="middle" font-family="Orbitron, sans-serif" font-size="60" fill="#06121f">TS</text>
+      </svg>
+      <div class="brand-text">
+        <h1>Team Sync</h1>
+        <p>Play • Connect • Sync</p>
+      </div>
+    </a>
+    <nav class="nav">
+      <a href="#about">About</a>
+      <a href="#outline">Outline</a>
+      <a href="#promotions">Promotions</a>
+      <a href="#rubric">Rubric</a>
+      <a href="#contact" class="btn btn-accent">Follow</a>
+    </nav>
+  </div>
+</header>
+
+<section id="home" class="hero" role="img" aria-label="Team Sync banner background">
+  <div class="hero-inner container">
+    <h2>Weekly Gaming Streams</h2>
+    <p>Family-friendly gameplay, teamwork, and good vibes every Friday at <strong>4:00 PM</strong>.</p>
+    <a class="btn btn-primary" href="https://www.twitch.tv/teamsync_official" target="_blank" rel="noopener">Watch on Twitch</a>
+    <a class="btn btn-outline" href="https://www.youtube.com/@teamsync_official" target="_blank" rel="noopener">YouTube Channel</a>
+  </div>
+</section>
+
+<main class="container content">
+  <section id="about" class="card">
+    <h3>About Team Sync</h3>
+    <p>We’re Grade 10 students streaming games to highlight <strong>teamwork, creativity, and positive online behavior</strong>. This website documents our <em>stream outline</em> and <em>promotional plan</em> for our Life Labs Quarter 2 Performance-Based Assessment.</p>
+    <ul class="bullets">
+      <li><strong>Main Platform:</strong> Twitch</li>
+      <li><strong>Content:</strong> Friendly gaming + short strategy talks + Q&amp;A</li>
+      <li><strong>Goal:</strong> Organized streams and consistent growth in viewers</li>
+    </ul>
+  </section>
+
+  <section id="outline" class="card">
+    <h3>Stream Outline & Schedule</h3>
+    <div class="grid-two">
+      <div>
+        <ol class="outline">
+          <li><span>4:00–4:05</span> Intro, shoutouts, stream rules</li>
+          <li><span>4:05–4:20</span> Gameplay + teamwork highlights</li>
+          <li><span>4:20–4:27</span> Live Q&amp;A / chat interaction</li>
+          <li><span>4:27–4:30</span> Wrap-up, next stream teaser</li>
+        </ol>
+      </div>
+      <aside class="note">
+        <h4>Technical Checklist</h4>
+        <ul>
+          <li>Mic test & audio levels</li>
+          <li>Stable internet (upload &gt; 5 Mbps)</li>
+          <li>Scenes ready (BRB / Live / End)</li>
+          <li>Safety: No personal info on cam</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section id="promotions" class="card">
+    <h3>Promotional Plan</h3>
+    <p>Funnel: <strong>announce → remind → go live → post highlights → ask for feedback</strong>.</p>
+    <div class="grid-three">
+      <div class="promo">
+        <h4>Poster</h4>
+        <p>Palette: <code>#1E90FF</code> primary, <code>#00FF88</code> accent, light text on dark.</p>
+        <p>Post to Facebook/Instagram one day before with countdown.</p>
+      </div>
+      <div class="promo">
+        <h4>Teaser Clip</h4>
+        <p>15-sec CapCut edit with captions. Upload to TikTok & YT Shorts.</p>
+        <p>Tags: <code>#TeamSync</code> <code>#GamingStream</code> <code>#LifeLabs</code></p>
+      </div>
+      <div class="promo">
+        <h4>Discord / GC</h4>
+        <p>Class GC or Discord for updates, polls, and feedback.</p>
+      </div>
+    </div>
+
+    <h4>Posting Timeline</h4>
+    <table class="timeline">
+      <thead><tr><th>When</th><th>Action</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td>2 days before</td><td>Design poster & finalize spiel</td><td>Prepare assets</td></tr>
+        <tr><td>1 day before</td><td>Post poster + countdown</td><td>Awareness</td></tr>
+        <tr><td>Streaming day</td><td>Go live + interact</td><td>Engagement</td></tr>
+        <tr><td>After stream</td><td>Upload highlights & thanks</td><td>Retention</td></tr>
+        <tr><td>Next day</td><td>Check metrics & adjust plan</td><td>Improve</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="rubric" class="card">
+    <h3>Rubric Alignment (Quick Check)</h3>
+    <ul class="checklist">
+      <li><strong>Layout:</strong> Clean cards, clear nav, mobile-friendly</li>
+      <li><strong>Color Scheme:</strong> Primary blue, green accent, neutral dark bg</li>
+      <li><strong>Font Style:</strong> Orbitron (headings) + Inter (body)</li>
+      <li><strong>Quality:</strong> Outline + promo plan match content</li>
+      <li><strong>Contribution:</strong> Roles: writer, editor, designer, tester</li>
+    </ul>
+  </section>
+
+  <section id="contact" class="card">
+    <h3>Follow & Contact</h3>
+    <ul class="links">
+      <li><strong>Twitch:</strong> <a href="https://www.twitch.tv/teamsync_official" target="_blank">Team Sync on Twitch</a></li>
+      <li><strong>YouTube:</strong> <a href="https://www.youtube.com/@teamsync_official" target="_blank">Team Sync on YouTube</a></li>
+      <li><strong>Instagram/TikTok:</strong> @teamsync_official</li>
+      <li><strong>Email:</strong> teamsync@example.com</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container small"></div>
+</footer>
+</body>
+</html>

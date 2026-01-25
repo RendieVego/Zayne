@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Digital Climate Change Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+:root {
+  --bg: #020617;
+  --card: #0f172a;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --primary: #0ea5e9;
+  --danger: #ef4444;
+  --warning: #facc15;
+}
+
+.light {
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #475569;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.3s;
+}
+
+header {
+  padding: 3rem 1.5rem;
+  text-align: center;
+  background: linear-gradient(135deg, var(--primary), #38bdf8);
+  color: white;
+}
+
+header h1 {
+  font-size: 2.8rem;
+}
+
+header p {
+  max-width: 750px;
+  margin: auto;
+  opacity: 0.95;
+}
+
+.controls {
+  margin-top: 1.5rem;
+}
+
+button {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  background: #020617;
+  color: white;
+}
+
+section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 3rem 1.5rem;
+}
+
+h2 {
+  color: var(--primary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 20px 30px rgba(0,0,0,0.25);
+}
+
+.stat {
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+
+.temp { color: var(--danger); }
+.rain { color: var(--primary); }
+.pollution { color: var(--warning); }
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🌍 Digital Climate Change Dashboard</h1>
+  <p>
+    A digital model that visualizes climate trends such as temperature rise,
+    rainfall changes, and pollution levels to support sustainable communities.
+  </p>
+  <div class="controls">
+    <button onclick="toggleMode()">🌗 Toggle Mode</button>
+  </div>
+</header>
+
+<section>
+  <h2>📊 Climate Indicators</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>🌡️ Temperature Rise</h3>
+      <div class="stat temp">+1.5°C</div>
+      <canvas id="tempChart"></canvas>
+    </div>
+
+    <div class="card">
+      <h3>🌧️ Rainfall Change</h3>
+      <div class="stat rain">+20%</div>
+      <canvas id="rainChart"></canvas>
+    </div>
+
+    <div class="card">
+      <h3>🏭 Pollution Levels</h3>
+      <div class="stat pollution">+35%</div>
+      <canvas id="pollutionChart"></canvas>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>📐 Mathematics Used</h2>
+  <div class="grid">
+    <div class="card">
+      ✔ Line graphs for trend analysis<br>
+      ✔ Percentages for increase and decrease<br>
+      ✔ Data interpretation and comparison
+    </div>
+    <div class="card">
+      Mathematics helps identify long-term climate patterns and supports data-driven decisions.
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>🔬 Science Concepts</h2>
+  <div class="grid">
+    <div class="card">
+      <strong>Climate Change</strong><br>
+      Greenhouse gases trap heat and increase global temperature.
+    </div>
+    <div class="card">
+      <strong>Ecosystems</strong><br>
+      Changes in climate disrupt biodiversity and food chains.
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>🌱 Sustainability Impact</h2>
+  <ul>
+    <li>Raises climate awareness</li>
+    <li>Supports disaster preparedness</li>
+    <li>Encourages eco-friendly actions</li>
+    <li>Promotes sustainable communities</li>
+  </ul>
+</section>
+
+<footer>
+  <p>Digital Climate Change Dashboard © 2026</p>
+  <p>Innovation Challenge | Sustainable Communities</p>
+  <p>Group 3 | Rendie Zayne Vego</p>
+  <p><em>Data shown are simulated for educational modeling purposes.</em></p>
+</footer>
+
+<script>
+function toggleMode() {
+  document.body.classList.toggle("light");
+}
+
+new Chart(document.getElementById('tempChart'), {
+  type: 'line',
+  data: {
+    labels: ['2000','2005','2010','2015','2020','2025'],
+    datasets: [{
+      data: [0.3,0.5,0.8,1.1,1.3,1.5],
+      borderColor: '#ef4444',
+      tension: 0.4
+    }]
+  }
+});
+
+new Chart(document.getElementById('rainChart'), {
+  type: 'line',
+  data: {
+    labels: ['2000','2005','2010','2015','2020','2025'],
+    datasets: [{
+      data: [5,8,10,14,18,20],
+      borderColor: '#0ea5e9',
+      tension: 0.4
+    }]
+  }
+});
+
+new Chart(document.getElementById('pollutionChart'), {
+  type: 'bar',
+  data: {
+    labels: ['2000','2005','2010','2015','2020','2025'],
+    datasets: [{
+      data: [10,15,18,25,30,35],
+      backgroundColor: '#facc15'
+    }]
+  }
+});
+</script>
+
+</body>
+</html>

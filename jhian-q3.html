@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BOOHighSchool • Stream Analysis</title>
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --panel:#101826;
+      --paper:#0f1420;
+      --line:rgba(255,255,255,.10);
+      --text:#eaf0ff;
+      --muted:rgba(234,240,255,.72);
+      --muted2:rgba(234,240,255,.55);
+      --accent:#35d3ff;   /* cyan */
+      --accent2:#ff4fd8;  /* pink */
+      --accent3:#ffe066;  /* yellow */
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 10% 0%, rgba(53,211,255,.12), transparent 55%),
+        radial-gradient(900px 600px at 90% 10%, rgba(255,79,216,.10), transparent 50%),
+        radial-gradient(800px 600px at 50% 100%, rgba(255,224,102,.10), transparent 60%),
+        linear-gradient(180deg, var(--bg), #070a0f 70%);
+      line-height:1.65;
+    }
+
+    /* HERO */
+    .hero{
+      position:relative;
+      padding:42px 18px 18px;
+      overflow:hidden;
+      border-bottom:1px solid var(--line);
+    }
+    .wrap{max-width:1100px; margin:0 auto;}
+    .brand{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .title{
+      display:flex;
+      gap:14px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .logo{
+      width:46px; height:46px;
+      border-radius:14px;
+      background:
+        linear-gradient(135deg, rgba(53,211,255,.95), rgba(255,79,216,.85));
+      box-shadow: 0 10px 30px rgba(53,211,255,.15);
+    }
+    h1{margin:0; font-size:26px; letter-spacing:.2px;}
+    .tagline{margin:4px 0 0; color:var(--muted); font-size:14px;}
+    .chips{
+      display:flex; flex-wrap:wrap; gap:8px;
+      margin-top:14px;
+    }
+    .chip{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(16,24,38,.55);
+      color:var(--muted);
+      font-size:12px;
+      backdrop-filter: blur(8px);
+    }
+    .chip strong{color:var(--text); font-weight:600;}
+    .cta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+      align-items:center;
+      justify-content:flex-end;
+    }
+    .btn{
+      border:1px solid var(--line);
+      background: rgba(16,24,38,.65);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:12px;
+      font-size:13px;
+      cursor:pointer;
+      user-select:none;
+      transition:.2s;
+    }
+    .btn:hover{transform: translateY(-1px); box-shadow: var(--shadow);}
+    .btn.primary{
+      border:0;
+      background: linear-gradient(135deg, rgba(53,211,255,.95), rgba(255,79,216,.85));
+      color:#061019;
+      font-weight:700;
+    }
+
+    /* LAYOUT */
+    .layout{
+      max-width:1100px;
+      margin:18px auto 34px;
+      padding:0 18px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
+    }
+    @media (max-width: 950px){
+      .layout{grid-template-columns:1fr;}
+      .cta{justify-content:flex-start;}
+    }
+
+    .panel{
+      background: rgba(16,24,38,.62);
+      border:1px solid var(--line);
+      border-radius:18px;
+      box-shadow: 0 18px 55px rgba(0,0,0,.28);
+      backdrop-filter: blur(10px);
+      overflow:hidden;
+    }
+    .panel-h{
+      padding:14px 16px;
+      border-bottom:1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .panel-h h2{
+      margin:0;
+      font-size:15px;
+      letter-spacing:.25px;
+      color:var(--text);
+    }
+    .panel-h .mini{
+      color:var(--muted2);
+      font-size:12px;
+    }
+    .panel-b{padding:16px;}
+
+    /* VIDEO PLACEHOLDER */
+    .videoShell{
+      border-radius:16px;
+      border:1px dashed rgba(53,211,255,.45);
+      background:
+        linear-gradient(135deg, rgba(53,211,255,.12), rgba(255,79,216,.10));
+      padding:14px;
+    }
+    .video{
+      width:100%;
+      aspect-ratio:16/9;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(7,10,15,.7);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:14px;
+      overflow:hidden;
+      position:relative;
+    }
+    .video iframe{
+      width:100%;
+      height:100%;
+      border:0;
+      border-radius:12px;
+      display:block;
+    }
+    .hint{
+      margin:10px 0 0;
+      color:var(--muted2);
+      font-size:12.5px;
+    }
+
+    /* ACCORDION */
+    details{
+      border:1px solid var(--line);
+      border-radius:14px;
+      background: rgba(15,20,32,.55);
+      overflow:hidden;
+      margin:10px 0;
+    }
+    summary{
+      cursor:pointer;
+      list-style:none;
+      padding:12px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      user-select:none;
+    }
+    summary::-webkit-details-marker{display:none;}
+    .kicker{
+      font-size:12px;
+      color:var(--muted2);
+      margin-top:2px;
+    }
+    .sumTitle{
+      font-weight:700;
+      font-size:14px;
+      margin:0;
+    }
+    .chev{
+      width:10px; height:10px;
+      border-right:2px solid var(--muted);
+      border-bottom:2px solid var(--muted);
+      transform: rotate(-45deg);
+      transition:.2s;
+      margin-left:8px;
+      flex: 0 0 auto;
+    }
+    details[open] .chev{transform: rotate(45deg);}
+    .content{
+      padding: 0 14px 14px 14px;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .content p{margin:10px 0 0;}
+    .content ul{margin:10px 0 0; padding-left:18px;}
+
+    /* METRICS */
+    .metrics{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    .metric{
+      border:1px solid var(--line);
+      background: rgba(15,20,32,.55);
+      border-radius:16px;
+      padding:12px 12px;
+    }
+    .metric .label{color:var(--muted2); font-size:12px;}
+    .metric .value{font-size:20px; font-weight:800; margin-top:4px;}
+    .metric .note{color:var(--muted2); font-size:12px; margin-top:2px;}
+
+    table{
+      width:100%;
+      border-collapse: collapse;
+      margin-top:12px;
+      border-radius:14px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background: rgba(15,20,32,.55);
+    }
+    th, td{
+      padding:10px 12px;
+      border-bottom:1px solid var(--line);
+      text-align:left;
+      font-size:13px;
+    }
+    th{color:var(--muted2); font-weight:700; background: rgba(255,255,255,.03);}
+    tr:last-child td{border-bottom:0;}
+
+    /* FIGURES */
+    .figure{
+      margin-top:12px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      overflow:hidden;
+      background: rgba(15,20,32,.55);
+    }
+    .figure img{width:100%; display:block; height:auto;}
+    .cap{
+      padding:10px 12px;
+      border-top:1px solid var(--line);
+      color:var(--muted2);
+      font-size:12.5px;
+    }
+
+    footer{
+      border-top:1px solid var(--line);
+      color:var(--muted2);
+      padding:22px 18px;
+    }
+    code{color: rgba(53,211,255,.95);}
+  </style>
+</head>
+
+<body>
+  <section class="hero">
+    <div class="wrap">
+      <div class="brand">
+        <div class="title">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <h1>BOOHighSchool Stream Analysis</h1>
+            <p class="tagline">A student-led podcast-style stream about school life, academic pressure, and mental health.</p>
+          </div>
+        </div>
+
+        <div class="cta">
+          <div class="btn primary" onclick="document.getElementById('video').scrollIntoView({behavior:'smooth'})">
+            Jump to Video
+          </div>
+          <div class="btn" onclick="document.getElementById('appendix').scrollIntoView({behavior:'smooth'})">
+            View Appendix
+          </div>
+        </div>
+      </div>
+
+      <div class="chips">
+        <span class="chip"><strong>Submission:</strong> Feb 2, 2026</span>
+        <span class="chip"><strong>LF:</strong> Julie Lanting Ramirez</span>
+        <span class="chip"><strong>Format:</strong> Interactive sections</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="layout">
+
+    <!-- LEFT: VIDEO + ACCORDION ANALYSIS -->
+    <section class="panel">
+      <div class="panel-h" id="video">
+        <h2>Stream Layout & Video</h2>
+        <div class="mini">Replace the placeholder with your embed</div>
+      </div>
+      <div class="panel-b">
+        <div class="videoShell">
+          <div class="video">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/QjgxpMiHfus?si=BVH06G4EBjlRWS6z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+            <!-- If you already have an embed link, uncomment below and delete the placeholder div above -->
+            <!--
+            <iframe
+              src="YOUR_EMBED_LINK_HERE"
+              title="BOOHighSchool Stream Video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+            -->
+          </div>
+          <p class="hint">
+            Folder tip: Put screenshots inside <code>images/</code> and update the figure file names below.
+          </p>
+        </div>
+
+        <div style="margin-top:14px;">
+          <details open>
+            <summary>
+              <div>
+                <div class="sumTitle">1) Summary of Stream</div>
+                <div class="kicker">What the stream was about + how it ran</div>
+              </div>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="content">
+              <p>
+                The stream was a live podcast-style talk show focused on everyday student experiences,
+                especially school life, academic pressure, and mental health. Its goal was to create a safe,
+                relatable space where students could share feelings and realize they are not alone.
+              </p>
+              <p>
+                The host shared personal experiences about stress and responsibilities, while the technical assistant
+                added interactive features like a live poll. Viewers were encouraged to use chat reactions, and a quick
+                Q&amp;A portion allowed real-time participation.
+              </p>
+              <p>
+                The tone stayed casual, friendly, and encouraging. After a short break, the stream continued with a more
+                interactive Q&amp;A and ended with a wrap-up message promoting mental health awareness and student support.
+              </p>
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              <div>
+                <div class="sumTitle">2) Content Analysis</div>
+                <div class="kicker">What worked well (tone, flow, features)</div>
+              </div>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="content">
+              <p>
+                The stream created a welcoming atmosphere through energetic hosting and relatable topics.
+                The friendly tone made viewers comfortable, and the discussion connected well with student audiences.
+              </p>
+              <p>
+                The live poll, reactions, and Q&amp;A added structure and helped maintain a smooth flow from introduction
+                to wrap-up, keeping viewers engaged until the end.
+              </p>
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              <div>
+                <div class="sumTitle">3) Areas of Opportunity</div>
+                <div class="kicker">What to improve next stream</div>
+              </div>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="content">
+              <ul>
+                <li><strong>Technical quality:</strong> upgrade mic/lighting for a more professional look.</li>
+                <li><strong>Time management:</strong> shorten long parts to keep attention steady.</li>
+                <li><strong>Promotion:</strong> post announcements early and invite more students to join.</li>
+                <li><strong>Content depth:</strong> include teacher/counselor insights for balance.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              <div>
+                <div class="sumTitle">4) Audience Engagement</div>
+                <div class="kicker">How viewers interacted</div>
+              </div>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="content">
+              <p>
+                Viewers interacted actively by sending messages, reacting, and supporting the hosts during the stream.
+                Many students shared that they could relate to the topics, which shows strong connection to the target audience.
+              </p>
+              <p>
+                This engagement helped build a sense of community and increased loyalty, making future streams more likely to gain support.
+              </p>
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              <div>
+                <div class="sumTitle">5) Viewership Analysis</div>
+                <div class="kicker">What the numbers mean</div>
+              </div>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="content">
+              <p>
+                The stream had moderate reach for a student project. The average view duration was <strong>7:14</strong>,
+                showing that viewers stayed long enough to watch meaningful parts of the discussion.
+              </p>
+              <p>
+                It reached a peak of <strong>9</strong> concurrent viewers and gained <strong>5</strong> new subscribers,
+                which indicates growth and interest in future content. The high chat activity shows the audience was engaged,
+                not just watching.
+              </p>
+              <p>
+                Moderate viewership may be due to limited promotion and a school-focused topic, but the quality of engagement
+                suggests strong impact within the target audience.
+              </p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT: INFO + METRICS + APPENDIX -->
+    <aside class="panel" id="appendix">
+      <div class="panel-h">
+        <h2>Appendix & Analytics</h2>
+        <div class="mini">Metrics + figures</div>
+      </div>
+      <div class="panel-b">
+        <div class="panel" style="border-radius:16px; border:1px solid var(--line); background: rgba(15,20,32,.45); box-shadow:none;">
+          <div class="panel-b" style="padding:14px;">
+            <div style="font-weight:800; margin-bottom:8px;">Project Info</div>
+            <div style="color:var(--muted); font-size:13.5px;">
+              <div><strong>Stream Name:</strong> BOOHighSchool</div>
+              <div><strong>LF:</strong> Julie Lanting Ramirez</div>
+              <div><strong>Submission:</strong> February 2, 2026</div>
+              <div style="margin-top:10px;"><strong>Group Members:</strong></div>
+              <ul style="margin:6px 0 0; padding-left:18px;">
+                <li>Jhian Clouiey Ruanto</li>
+                <li>Zahfina Sheryn Abdurahsi</li>
+                <li>Jensen Dannielle Zotomayor</li>
+                <li>Ethan Jethro Guingcangco</li>
+                <li>Gabriel Ma. Elizabeth Conejo</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px;">
+          <div style="font-weight:800; margin-bottom:10px;">Key Metrics</div>
+          <div class="metrics">
+            <div class="metric">
+              <div class="label">Views during live</div>
+              <div class="value">33</div>
+              <div class="note">Student-led reach</div>
+            </div>
+            <div class="metric">
+              <div class="label">Avg. view duration</div>
+              <div class="value">7:14</div>
+              <div class="note">Good retention</div>
+            </div>
+            <div class="metric">
+              <div class="label">Peak concurrents</div>
+              <div class="value">9</div>
+              <div class="note">Steady viewers</div>
+            </div>
+            <div class="metric">
+              <div class="label">New subscribers</div>
+              <div class="value">5</div>
+              <div class="note">Growth indicator</div>
+            </div>
+          </div>
+
+          <table>
+            <thead>
+              <tr><th>Metric</th><th>Value</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Total likes</td><td>8</td></tr>
+              <tr><td>Total chats</td><td>92</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="margin-top:14px;">
+          <div style="font-weight:800; margin-bottom:8px;">Figures</div>
+
+          <!-- Rename files + keep inside /images folder -->
+          <div class="figure">
+            <img src="images/boohighschool_thumbnail.png" alt="Figure 1. Audience engagement during the live stream (chat messages and reactions)." />
+            <div class="cap">Figure 1. Audience engagement during the live stream (chat messages and reactions).</div>
+          </div>
+
+          <div class="figure">
+            <img src="images/figure2-concurrent.png" alt="Figure 2. Concurrent viewers during the live stream." />
+            <div class="cap">Figure 2. Concurrent viewers during the live stream.</div>
+          </div>
+
+          <div class="figure">
+            <img src="images/figure3-overview.png" alt="Figure 3. Audience overview for the live stream." />
+            <div class="cap">Figure 3. Audience overview for the live stream.</div>
+          </div>
+
+          <div class="hint">
+            If your teacher wants proof screenshots, keep these figures visible + labeled.
+          </div>
+        </div>
+      </div>
+    </aside>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div style="font-weight:800;">BOOHighSchool • Stream Analysis Webpage</div>
+    </div>
+  </footer>
+</body>
+</html>
+

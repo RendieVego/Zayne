@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TeamSync – Welcome</title>
+
+<style>
+{
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #222;
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 50px;
+    background: #ffffff;
+}
+
+/* logo left */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    margin-right: 12px;
+}
+
+.logo strong {
+    font-size: 26px;
+}
+
+.logo span {
+    font-size: 14px;
+    color: #444;
+}
+
+/* nav links right */
+.nav-links a {
+    margin-left: 25px;
+    text-decoration: none;
+    color: #222;
+    font-size: 16px;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- HERO IMAGE SECTION ---------- */
+.hero {
+    position: relative;
+    height: 55vh;
+    background:
+        linear-gradient(
+            rgba(120,100,200,0.55),
+            rgba(120,100,200,0.55)
+        ),
+        url("image.jpg"); /* replace with your background */
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* title box */
+.hero-box {
+    background: rgba(255,255,255,0.75);
+    padding: 40px 60px;
+    max-width: 900px;
+}
+
+.hero-box h1 {
+    margin: 0;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* divider line */
+.hero-divider {
+    margin: 25px auto 0;
+    width: 250px; /* longer line but not full width */
+    height: 3px;
+    background: #ffffff;
+    border-radius: 2px;
+}
+
+/* ---------- TEXT SECTION ---------- */
+.content {
+    background: linear-gradient(
+        to bottom,
+        #d9c8ff,
+        #f6f0ff
+    );
+    padding: 60px 80px;
+}
+
+.content p {
+    max-width: 1000px;
+    margin: 0 auto 25px;
+    font-size: 17px;
+    line-height: 1.7;
+    color: #222;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">
+        <img src="PNG.jpeg" alt="TeamSync Logo">
+        <div>
+            <strong>TeamSync</strong>
+            <span>Play • Connect • Sync</span>
+        </div>
+    </div>
+
+    <div class="nav-links">
+        <a href="#">Welcome</a>
+        <a href="#">About Us</a>
+        <a href="#">Live Stream</a>
+        <a href="#">Data Analytics</a>
+    </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <div class="hero-box">
+        <h1>
+            Welcome to TeamSync – Where We Play, Connect, and Sync
+        </h1>
+        <div class="hero-divider"></div>
+    </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+    <p>
+        This platform brings our community together by showcasing insights and
+        data analytics from our latest live stream.
+    </p>
+
+    <p>
+        Through clear visuals and organized information, TeamSync highlights
+        key moments, performance trends, and audience engagement to help us
+        better understand our shared experiences. Whether you're here to review
+        the data or reconnect with the stream highlights, TeamSync keeps
+        everything aligned in one place.
+    </p>
+</div>
+
+</body>
+</html>

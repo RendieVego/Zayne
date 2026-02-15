@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Stream Analysis | Stream Squad PH</title>
+
+<style>
+  :root{
+    --bg0:#070410;
+    --bg1:#0d0620;
+    --glass: rgba(255,255,255,.06);
+    --glass2: rgba(255,255,255,.04);
+    --stroke: rgba(255,255,255,.12);
+    --stroke2: rgba(168,85,247,.35);
+    --text:#f6f2ff;
+    --muted:#cdbdff;
+    --accent:#a855f7;
+    --accent2:#c084fc;
+    --good:#8b5cf6;
+    --shadow: 0 22px 60px rgba(0,0,0,.55);
+    --r: 18px;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    color:var(--text);
+    background:
+      radial-gradient(1000px 600px at 10% 10%, rgba(168,85,247,.28), transparent 60%),
+      radial-gradient(900px 540px at 90% 20%, rgba(192,132,252,.22), transparent 60%),
+      radial-gradient(900px 540px at 50% 110%, rgba(168,85,247,.18), transparent 55%),
+      linear-gradient(180deg, var(--bg0), var(--bg1));
+  }
+
+  /* ====== Layout ====== */
+  .app{
+    display:grid;
+    grid-template-columns: 290px 1fr;
+    min-height:100vh;
+  }
+  @media (max-width: 980px){
+    .app{grid-template-columns:1fr}
+    .side{position:sticky; top:0; z-index:20}
+  }
+
+  /* ====== Sidebar ====== */
+  .side{
+    padding:22px;
+    border-right:1px solid rgba(255,255,255,.08);
+    background: linear-gradient(180deg, rgba(168,85,247,.12), rgba(0,0,0,0));
+    backdrop-filter: blur(10px);
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px 14px;
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,.10);
+    background: rgba(255,255,255,.05);
+    box-shadow: var(--shadow);
+  }
+  .logo{
+    width:42px; height:42px; border-radius:14px;
+    background:
+      radial-gradient(16px 16px at 30% 30%, rgba(255,255,255,.28), transparent 60%),
+      linear-gradient(135deg, var(--accent), #6d28d9);
+    border:1px solid rgba(255,255,255,.14);
+  }
+  .brand h1{
+    margin:0;
+    font-size:16px;
+    letter-spacing:.3px;
+  }
+  .brand p{
+    margin:2px 0 0;
+    color:var(--muted);
+    font-size:12px;
+  }
+
+  .meta{
+    margin-top:14px;
+    padding:14px;
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,.10);
+    background: rgba(255,255,255,.04);
+  }
+  .meta .pill{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin:8px 8px 0 0;
+    padding:8px 10px;
+    border-radius:999px;
+    border:1px solid rgba(168,85,247,.30);
+    background: rgba(168,85,247,.12);
+    color: var(--accent2);
+    font-size:12px;
+    white-space:nowrap;
+  }
+
+  nav{
+    margin-top:18px;
+    display:grid;
+    gap:10px;
+  }
+  nav a{
+    text-decoration:none;
+    color:var(--text);
+    padding:12px 12px;
+    border-radius:14px;
+    border:1px solid rgba(255,255,255,.10);
+    background: rgba(255,255,255,.03);
+    transition: transform .12s ease, border-color .12s ease, background .12s ease;
+  }
+  nav a:hover{
+    transform: translateX(4px);
+    border-color: rgba(168,85,247,.45);
+    background: rgba(168,85,247,.10);
+  }
+  .hint{
+    margin-top:14px;
+    color:var(--muted);
+    font-size:12px;
+    opacity:.95;
+  }
+
+  /* ====== Main ====== */
+  .main{
+    padding:28px;
+  }
+  .hero{
+    border-radius: 22px;
+    border: 1px solid rgba(255,255,255,.12);
+    background:
+      radial-gradient(700px 220px at 30% 0%, rgba(168,85,247,.32), transparent 60%),
+      radial-gradient(700px 220px at 80% 10%, rgba(192,132,252,.20), transparent 60%),
+      linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+    box-shadow: var(--shadow);
+    overflow:hidden;
+    position:relative;
+  }
+  .heroInner{
+    padding: 22px 22px 18px;
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+    align-items:flex-end;
+    justify-content:space-between;
+  }
+  .hero h2{
+    margin:0;
+    font-size: clamp(22px, 2.7vw, 34px);
+  }
+  .hero p{
+    margin:8px 0 0;
+    color: var(--muted);
+    max-width: 70ch;
+  }
+
+  .kpiStrip{
+    display:grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    padding: 0 22px 22px;
+  }
+  @media (max-width: 980px){
+    .kpiStrip{grid-template-columns: repeat(2, 1fr)}
+    .kpiStrip .kpi:last-child{grid-column:1/-1}
+  }
+  .kpi{
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,.10);
+    background: rgba(0,0,0,.18);
+    padding: 14px 14px 12px;
+    position:relative;
+    overflow:hidden;
+  }
+  .kpi::before{
+    content:"";
+    position:absolute;
+    inset:-1px -1px auto -1px;
+    height:3px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    opacity:.95;
+  }
+  .kpi .label{
+    margin:0;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  .kpi .value{
+    margin: 6px 0 0;
+    font-size: 26px;
+    font-weight: 850;
+    color: var(--accent2);
+    text-shadow: 0 0 14px rgba(168,85,247,.55);
+  }
+
+  /* ====== Sections ====== */
+  .row{
+    display:grid;
+    grid-template-columns: 1.25fr .75fr;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  @media (max-width: 980px){
+    .row{grid-template-columns:1fr}
+  }
+
+  .panel{
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,.10);
+    background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+    box-shadow: var(--shadow);
+    padding: 18px;
+  }
+  .panel h3{
+    margin:0 0 10px;
+    color: var(--accent2);
+    font-size: 18px;
+  }
+  .panel p{
+    margin: 0 0 12px;
+    color: rgba(246,242,255,.92);
+  }
+
+  /* ====== Timeline Cards ====== */
+  .timeline{
+    display:grid;
+    gap:12px;
+  }
+  .step{
+    border-radius: 18px;
+    border:1px solid rgba(255,255,255,.10);
+    background: rgba(0,0,0,.18);
+    padding: 14px;
+    position:relative;
+    overflow:hidden;
+  }
+  .step::before{
+    content:"";
+    position:absolute;
+    left:0; top:0; bottom:0;
+    width:4px;
+    background: linear-gradient(180deg, var(--accent), transparent);
+    opacity:.9;
+  }
+  .step .num{
+    font-size:12px;
+    color: var(--muted);
+  }
+  .step .title{
+    margin:6px 0 6px;
+    font-weight: 800;
+    letter-spacing:.2px;
+  }
+
+  /* ====== Table ====== */
+  table{
+    width:100%;
+    border-collapse: collapse;
+    overflow:hidden;
+    border-radius: 16px;
+    border:1px solid rgba(255,255,255,.10);
+    background: rgba(0,0,0,.16);
+  }
+  th, td{
+    padding:12px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    text-align:left;
+    font-size:14px;
+  }
+  th{
+    background: rgba(168,85,247,.18);
+    font-weight: 800;
+  }
+  tr:last-child td{border-bottom:none}
+
+  .mini{
+    font-size:12px;
+    color: var(--muted);
+    margin-top: 10px;
+  }
+
+  /* ====== Footer ====== */
+  footer{
+    margin-top: 18px;
+    text-align:center;
+    color: var(--muted);
+    font-size: 12px;
+    opacity:.95;
+  }
+</style>
+</head>
+
+<body>
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="side">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"></div>
+      <div>
+        <h1>Stream Squad PH</h1>
+        <p>Stream Analysis Webpage</p>
+      </div>
+    </div>
+
+    <div class="meta">
+      <div class="pill">🎮 Gaming Stream</div>
+      <div class="pill">📺 Platform: Twitch</div>
+      <div class="pill">🗓️ February 2026</div>
+    </div>
+
+    <nav>
+      <a href="#summary">1. Summary</a>
+      <a href="#well">2. Things Well Done</a>
+      <a href="#opp">3. Areas of Opportunities</a>
+      <a href="#engage">4. Engagement Level</a>
+      <a href="#view">5. Viewership Analysis</a>
+      <a href="#table">Table 1</a>
+    </nav>
+
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="heroInner">
+        <div>
+          <h2>Stream Analysis: Stream Squad PH</h2>
+          <p>
+            This page summarizes the livestream performance and reflects on what happened during the stream,
+            including strengths, areas for improvement, engagement, and viewership insights.
+          </p>
+        </div>
+        <div class="mini">
+          Learning Facilitator: <strong>Mrs. Julie Lanting Ramirez</strong>
+        </div>
+      </div>
+
+      <!-- KPI STRIP -->
+      <div class="kpiStrip">
+        <div class="kpi"><p class="label">Unique Viewers</p><p class="value">10</p></div>
+        <div class="kpi"><p class="label">Peak Viewers</p><p class="value">6</p></div>
+        <div class="kpi"><p class="label">Average Viewers</p><p class="value">1.3</p></div>
+        <div class="kpi"><p class="label">Unique Chatters</p><p class="value">2</p></div>
+        <div class="kpi"><p class="label">New Followers</p><p class="value">0</p></div>
+      </div>
+    </section>
+
+    <div class="row">
+      <!-- LEFT: TIMELINE CONTENT -->
+      <section class="panel timeline">
+        <div id="summary" class="step">
+          <div class="num">SECTION 1</div>
+          <div class="title">Summary of Stream</div>
+          <p>
+            This paper presents an honest analysis of our livestream titled <strong>Stream Squad PH</strong>, which was streamed on Twitch
+            for <strong>1 hour and 44 minutes</strong> and focused on gaming content. Based on the stream data, the livestream reached
+            <strong>10 unique viewers</strong>, with a peak of <strong>6 viewers</strong> and an average of <strong>1.3 viewers</strong>.
+            There were <strong>2 unique chatters</strong>, and no new followers were gained.
+          </p>
+          <p>
+            Although the stream had some viewers, overall engagement remained low. The atmosphere was not consistently friendly due to
+            inappropriate language used by one group member. This analysis discusses what occurred, what went well, what needs improvement,
+            the engagement level, and possible reasons behind limited viewership.
+          </p>
+        </div>
+
+        <div id="well" class="step">
+          <div class="num">SECTION 2</div>
+          <div class="title">Things Well Done During the Stream</div>
+          <p>
+            Despite the challenges, the group continued the livestream until the end. Even when there were little to no viewers, the members
+            did not stop the stream and still completed the task, showing responsibility and commitment.
+          </p>
+          <p>
+            Another positive aspect was the basic coordination among some group members. The group was able to manage the gameplay and keep
+            the stream running smoothly, showing cooperation even with low motivation.
+          </p>
+        </div>
+
+        <div id="opp" class="step">
+          <div class="num">SECTION 3</div>
+          <div class="title">Areas of Opportunities</div>
+          <p>
+            One major area for improvement was the absence of consistent viewers. With few people watching, there was little audience interaction,
+            making the stream less engaging. Proper promotion and clear scheduling before going live can improve this.
+          </p>
+          <p>
+            Starting later than scheduled may have affected engagement, since some viewers might have left or missed the opening part.
+            Better preparation and time management can improve credibility and viewer satisfaction.
+          </p>
+          <p>
+            Another serious concern was the frequent use of inappropriate words during the stream. This created an uncomfortable and unprofessional atmosphere
+            and could discourage viewers from staying or returning.
+          </p>
+          <p>
+            The overall mood lacked friendliness and positivity. Setting clear rules for behavior and communication before streaming can improve future streams.
+          </p>
+        </div>
+
+        <div id="engage" class="step">
+          <div class="num">SECTION 4</div>
+          <div class="title">Level of Engagement</div>
+          <p>
+            Engagement was low. Although the stream reached 10 unique viewers and had 2 unique chatters, interaction remained minimal.
+            The average viewership of 1.3 viewers suggests most viewers did not stay long.
+          </p>
+          <p>
+            Limited chat activity and an unwelcoming atmosphere reduced meaningful engagement. Inappropriate language also made the stream uncomfortable,
+            which affected overall professionalism.
+          </p>
+        </div>
+
+        <div id="view" class="step">
+          <div class="num">SECTION 5</div>
+          <div class="title">Viewership Analysis</div>
+          <p>
+            The stream had low viewership based on the Twitch summary. While 10 unique viewers visited, average viewership stayed at 1.3 with a peak of 6.
+            This suggests viewers may have joined briefly but did not stay long.
+          </p>
+          <p>
+            Possible reasons include limited promotion, timing, and the uncomfortable atmosphere caused by inappropriate language. The lack of new followers
+            suggests the stream did not strongly encourage viewers to continue supporting the channel.
+          </p>
+          <p>
+            Improving content quality, maintaining respectful behavior, and promoting the stream can help increase viewership and engagement in future livestreams.
+          </p>
+        </div>
+      </section>
+
+      <!-- RIGHT: GROUP INFO + TABLE -->
+      <aside class="panel">
+        <h3>Group Members</h3>
+        <p style="margin-top:-4px; color:var(--muted);">
+          Sean Curt Justine R. Visperas<br>
+          Jozeph Nimrod Hipolito<br>
+          Anabelle Elopre<br>
+          Marcus Dylan Capaycapay<br>
+          London Joni Leonard<br>
+          Daphne Lilliene Mortel<br>
+          Nina Maria Rosario Contreras<br>
+          Rain Siblang
+        </p>
+
+        <div id="table" style="margin-top:14px;">
+          <h3>Table 1. Stream Performance Data</h3>
+          <table>
+            <thead>
+              <tr><th>Metric</th><th>Result</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Stream Duration</td><td>1 Hour 44 Minutes</td></tr>
+              <tr><td>Unique Viewers</td><td>10</td></tr>
+              <tr><td>Peak Viewers</td><td>6</td></tr>
+              <tr><td>Average Viewers</td><td>1.3</td></tr>
+              <tr><td>Unique Chatters</td><td>2</td></tr>
+              <tr><td>New Followers</td><td>0</td></tr>
+            </tbody>
+          </table>
+
+          <p class="mini">
+            Interpretation: The stream reached 10 unique viewers but had weak retention (average 1.3). Low chatters and zero new followers suggest limited engagement.
+          </p>
+        </div>
+
+        <div id="appendix" style="margin-top:14px;">
+          <h3>Appendix</h3>
+          <p class="mini">
+            Appendix A: Twitch analytics screenshot (NOTE: Put your analytics screenshot here ~Rendie.)<br>
+            Appendix B: Stream link / poster (NOTE: put your poster here ~Rendie)<br>
+            Appendix C: Reflection notes (NOTE: put your reflection here if you have ~Rendie)
+          </p>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      Stream Squad PH • Stream Analysis Webpage • February 2026
+    </footer>
+
+  </main>
+</div>
+</body>
+</html>
